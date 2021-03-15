@@ -4,7 +4,7 @@
 `Functional Requirements`:  
 - Senders are able to sender messages to the message bus.
 - Consumers are able to retrieve the messages.
-- Messages maintain some sort of order.
+- Message Bus maintains message order.
 
 `Non Functional Requirements`:
 - Highly available
@@ -67,6 +67,13 @@ A kafka cluster consists of a set of brokers. Brokers seliver multiple functiona
   - Zookeeper is used to monitor node availability amongst other functionality. 
   - Further details are described in subsequent sections.
 
+##### `Data and Metadata Storage`:
+- The cluster configuration, the cluster state and the topics metadata are stord in Zookeeper.
+- Brokers store the following in their local store.
+  - certain metadata related to consumer offsets
+    - These are stored in an internal topic, e.g., __consumer_offsets
+  - Messages and related metadata
+ 
 
 The subsequent sections discuss various aspects of Kafka configuration and operations in the form of a set of questions and answers.
 
