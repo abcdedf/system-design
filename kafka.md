@@ -24,12 +24,13 @@ Some basic terminologies wil make it easier to decribe a Kafka Cluster.
 It will be useful to define some basic terms making it easier to discuss Kafka platform.
 
 ##### `Basic Terminologies`:  
-######`Producers, Consumers and Kafka Cluster (Message bus)`:
+
+###### `Producers, Consumers and Kafka Cluster (Message bus)`:
 - Producers: Producer applications publish/write message to Kafka message bus system.  
 - Consumers: Consumer applications subscribe and read messages from Kafka message bus system.  
 - Kafka Cluster: A Kafka cluster is a self-sufficient platform delivering message bus service. It is discussed in more details subsequently.  
 
-######`Topics and Partitions`:
+###### `Topics and Partitions`:
 - `Topics`: Topics define categories of messages. One can visualize the topics similar to folders in a filesystem. 
   - Topic is a unit of scale in Kafka. Topics are served by separte physical servers enabling the customers to scale the message bus.
 - `Partitions`: The messages for a Kafka topic is stored in one or more partitions. 
