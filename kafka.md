@@ -89,10 +89,10 @@ The subsequent sections discuss various aspects of Kafka configuration and opera
     - Note that this is very basic explanation. There are advanced functionality available and they are discussed subsequently. 
 - What is the role of ZooKeeper in a Kafka Cluster?
   - Kafka makes use of ZooKeeper's configuration service for a Kafka cluster. 
-  - Although, many of the cluster administrative tasks are performed by Controlloer broker, controller broker depends on Zookeeper for monitoring the health of al the brokers in a cluster.
+  - Although, many of the cluster administrative tasks are performed by Controlloer broker, controller broker depends on Zookeeper for monitoring the health of all the brokers in a cluster and getting notified when a broker state changes.
 - What are the topics and how they are used?
   - A topic defines a category of messages.
-  - This is a unit of scale in Kafka in that one can increase the over all throughput of the system by increasing the number of topics and adding servers serving teh topics.
+  - This is a unit of scale in Kafka in that one can increase the over all throughput of the system by increasing the number of topics and adding servers serving the topics.
   - Some examples: Customers, Orders, user-signups, user-activities, etc. Each of these message types can indenependtly scale as they are served by separate servers.
 - What are Partitions and how are they used?
   - Partitions provide further unit of scale for a topic. 
@@ -100,8 +100,10 @@ The subsequent sections discuss various aspects of Kafka configuration and opera
   - Thus, partitions allow further scaling of the throughput per topic. 
 - How are the server resources efficiently utilized, since the throughput requirements of topics may vary greatly?
   - Good question. Kafka is well designed for efficient resource utilization. 
-  - Each broker can be configured to serve  N partitions, either as a leader of followers. 
-  - That provides great flexibility to confure a broker to be efficiently utilized. 
+  - Each broker can be configured to serve  N partitions, either as a leader or a follower for a partition. 
+  - That provides great flexibility to confure a broker with 
+    - one or more partition leader and
+    - one or more partition  utilizing a broker optimumly. 
 - Is Kafka highly available?
   - Yes, it delivers high availability by providing the functionality of maintaining one or more replicas per partition. 
   - Kafka replicates each partition to a set of separate services based on configurable replication factor.
@@ -115,6 +117,9 @@ The subsequent sections discuss various aspects of Kafka configuration and opera
     - Exactly Once: Messages are not lost and are delivered exactly once.
       - The scenario occurs with configuration: request.required.acks = ALL
       - TODO: This is a complex topic. Paraphrase the functionality succintly and include description of how it is acheved through Kafka transactional messaging.
+- How does Kafak deliver low latency:  
+  - Write low latency: Kakfa deploys techniques of horizontal scaleout of servers with topic and partition abstractions, append only messaage storage enabling efficient sequential writes, memory mapped message index files etc. delivering low write latency. 
+  - Read Low Latency: Kafka employs zero-copy message forwarding from local disk storage to the consumer socket and sequenctial disk reads delivering low read latency. Furthermore, Kafka stores the message in the received format so that they can be delivered without any modification to the messages.
 - How does message ordering work in Kafka?
   - Kafka delivers message order per partition.
   - So, the messages in a topic are not ordered across the partitions.
