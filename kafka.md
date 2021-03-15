@@ -43,9 +43,10 @@ It will be useful to define some basic terms making it easier to discuss Kafka p
 
 The diagram illustrates a Kafka cluster with a configuration of  
 - Four brokers,  
-- Two topics, with with three partitions each and 
-- each partition with a replication factor of three.  
-And the Kafka cluster is serving three producers and three consumers.
+- Two topics, each with three partitions and 
+- Each partition with a replication factor of three.  
+ 
+And the Kafka cluster is serving three producers and three consumers.  
 
 ##### `Kafka Cluster Components`:
 `Brokers`:
