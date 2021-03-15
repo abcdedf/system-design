@@ -7,12 +7,12 @@
 - Messages maintain some sort of order.
 
 `Non Functional Requirements`:
-- Highly available in the event of failures
+- Highly available
 - Highly durable once acknowledged
 - Highly scalable
   - Number of message types
   - Number of messages per type
-- Low latency delivery
+- Low latency writes and reads
 
 Kafka is a highly reliable, scalable, durable, decoupled, publish/subscribe and low latency distributed message bus system. 
 We will discuss the design aspects of Kafka in this page.
