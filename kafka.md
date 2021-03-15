@@ -50,21 +50,21 @@ And the Kafka cluster is serving three producers and three consumers.
 
 ##### `Kafka Cluster Components`:
 `Brokers`:
-A kafka cluster consists of a set of brokers. Brokers seliver multiple functionality.
+A kafka cluster consists of a set of brokers. The brokers support multiple functionality.
 - Bootstrap Server Functionality:
   - Each broker can provide bootstrap functionality.
   - Only a small subset of broker endpoints are dvertised as bootstrap server endpoints. 
   - Bootstrap service provides the clients with 
     - endpoints for the brokers for specific topics
     - functionality of topic management, e.g., create/delete topics.
-- Partition Message Service:
+- Partition Service:
   - For each topic/partition, there is one leader broker and zero or more follower brokers. 
   - The clients can only write to or read from the leader broker for a topic/partition.
-  - The follower broker replicate the partition messages to their local stores and could act as the leader in case the leader is inaccessible.
-  - Futhre details are described below.
+  - The follower brokers replicate the partition messages to their local stores and could act as the leader in case the leader is inaccessible.
+  - Futher details of leader selection are described in a subsequent section.
 `ZooKeeper`:
-  - Kafka uses ZooKeeper as the distributed configuration service.
-  - Zookeeper is used to monitor node availability amongst other functionality. 
+  - Kafka uses ZooKeeper fot the distributed configuration service.
+  - Zookeeper is used to monitor node availability amongst other functionality, controller broker selection. 
   - Further details are described in subsequent sections.
 
 ##### `Data and Metadata Storage`:
