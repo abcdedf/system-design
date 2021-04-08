@@ -2,7 +2,7 @@
 
 ##### Requirements:
 `Functional Requirements`:  
-- Senders are able to sender messages to the message bus.
+- Senders are able to send messages to the message bus.
 - Consumers are able to retrieve the messages.
 - Message Bus maintains message order.
 
